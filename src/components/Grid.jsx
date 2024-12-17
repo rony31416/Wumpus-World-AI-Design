@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Cell from "./Cell";
+import { FaArrowUp, FaArrowDown, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const Grid = () => {
   const gridSize = 10;
@@ -84,7 +85,8 @@ const Grid = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
+      {/* Grid Display */}
       <div className="grid grid-cols-10 gap-1">
         {grid.map((row, rowIndex) =>
           row.map((cell, colIndex) => (
@@ -100,11 +102,38 @@ const Grid = () => {
           ))
         )}
       </div>
-      <div className="mt-4 flex space-x-2">
-        <button onClick={() => moveAgent("up")}>Up</button>
-        <button onClick={() => moveAgent("left")}>Left</button>
-        <button onClick={() => moveAgent("down")}>Down</button>
-        <button onClick={() => moveAgent("right")}>Right</button>
+
+      {/* Navigation Controls */}
+      <div className="mt-6 flex flex-col items-center space-y-2">
+        {/* Up Button */}
+        <button
+          className="p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600"
+          onClick={() => moveAgent("up")}
+        >
+          <FaArrowUp size={20} />
+        </button>
+
+        {/* Left, Down, Right Buttons */}
+        <div className="flex space-x-4">
+          <button
+            className="p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600"
+            onClick={() => moveAgent("left")}
+          >
+            <FaArrowLeft size={20} />
+          </button>
+          <button
+            className="p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600"
+            onClick={() => moveAgent("down")}
+          >
+            <FaArrowDown size={20} />
+          </button>
+          <button
+            className="p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600"
+            onClick={() => moveAgent("right")}
+          >
+            <FaArrowRight size={20} />
+          </button>
+        </div>
       </div>
     </div>
   );
